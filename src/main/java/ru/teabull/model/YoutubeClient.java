@@ -3,7 +3,7 @@ package ru.teabull.model;
 import javax.persistence.*;
 
 @Entity
-public class Client {
+public class YoutubeClient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,17 +11,6 @@ public class Client {
 
     @Column(nullable = false, unique = true)
     private String fullName;
-
-    @Column
-    private String vkLink;
-
-    public Client() {
-    }
-
-    public Client(String fullName, String vkLink) {
-        this.fullName = fullName;
-        this.vkLink = vkLink;
-    }
 
     public long getId() {
         return id;
@@ -37,13 +26,5 @@ public class Client {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getVkLink() {
-        return vkLink;
-    }
-
-    public void setVkLink(String vkLink) {
-        this.vkLink = vkLink;
     }
 }

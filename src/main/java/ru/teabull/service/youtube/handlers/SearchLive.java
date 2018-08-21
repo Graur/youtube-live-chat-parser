@@ -12,7 +12,7 @@
  * the License.
  */
 
-package ru.teabull.service.youtube;
+package ru.teabull.service.youtube.handlers;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
