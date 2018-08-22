@@ -25,7 +25,7 @@ public class VkConfigImpl implements VkConfig {
         try {
             token = env.getRequiredProperty("vk.token");
             version = env.getRequiredProperty("vk.version");
-            targetVkGroup = env.getRequiredProperty("youtube.target.vkclub.id");
+            targetVkGroup = env.getRequiredProperty("youtube.target.vkgroup.id");
             if (token.isEmpty() || version.isEmpty() || targetVkGroup.isEmpty()) {
                 throw new NullPointerException();
             }

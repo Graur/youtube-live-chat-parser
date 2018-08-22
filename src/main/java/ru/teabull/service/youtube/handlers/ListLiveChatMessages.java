@@ -113,7 +113,12 @@ public class ListLiveChatMessages {
                             List<LiveChatMessage> messages = response.getItems();
                             for (int i = 0; i < messages.size(); i++) {
                                 LiveChatMessage message = messages.get(i);
+                                LiveChatMessageSnippet snippet = message.getSnippet();
                                 addYoutubeClientToDB(message.getAuthorDetails().getDisplayName());
+                                System.out.println(buildOutput(
+                                        snippet.getDisplayMessage(),
+                                        message.getAuthorDetails(),
+                                        snippet.getSuperChatDetails()));
                             }
 
                             // Request the next page of messages
@@ -164,5 +169,49 @@ public class ListLiveChatMessages {
 
     public boolean isLiveStreamInAction() {
         return isLiveStreamInAction;
+    }
+
+    /**
+     * Formats a chat message for console output.
+     *
+     * @param message The display message to output.
+     * @param author The author of the message.
+     * @param superChatDetails SuperChat details associated with the message.
+     * @return A formatted string for console output.
+     */
+    private static String buildOutput(
+            String message,
+            LiveChatMessageAuthorDetails author,
+            LiveChatSuperChatDetails superChatDetails) {
+        StringBuilder output = new StringBuilder();
+        if (superChatDetails != null) {
+            output.append(superChatDetails.getAmountDisplayString());
+            output.append("SUPERCHAT RECEIVED FROM ");
+        }
+        output.append(author.getDisplayName());
+        List<String> roles = new ArrayList<String>();
+        if (author.getIsChatOwner()) {
+            roles.add("OWNER");
+        }
+        if (author.getIsChatModerator()) {
+            roles.add("MODERATOR");
+        }
+        if (author.getIsChatSponsor()) {
+            roles.add("SPONSOR");
+        }
+        if (roles.size() > 0) {
+            output.append(" (");
+            String delim = "";
+            for (String role : roles) {
+                output.append(delim).append(role);
+                delim = ", ";
+            }
+            output.append(")");
+        }
+        if (message != null && !message.isEmpty()) {
+            output.append(": ");
+            output.append(message);
+        }
+        return output.toString();
     }
 }
