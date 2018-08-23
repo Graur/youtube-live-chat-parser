@@ -115,7 +115,7 @@ public class ListLiveChatMessages {
                                 LiveChatMessage message = messages.get(i);
                                 LiveChatMessageSnippet snippet = message.getSnippet();
                                 addYoutubeClientToDB(message.getAuthorDetails().getDisplayName());
-                                System.out.println(buildOutput(
+                                logger.info(buildOutput(
                                         snippet.getDisplayMessage(),
                                         message.getAuthorDetails(),
                                         snippet.getSuperChatDetails()));
