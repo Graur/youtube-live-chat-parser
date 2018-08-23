@@ -1,5 +1,7 @@
 package ru.teabull.shedule;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -26,6 +28,8 @@ public class ScheduleTask {
 
     private final ClientService clientService;
 
+    private static Logger logger = LoggerFactory.getLogger(ScheduleTask.class);
+
     @Autowired
     public ScheduleTask(YoutubeService youtubeService, VkService vkService, YoutubeClientService youtubeClientService, ClientService clientService) {
         this.youtubeService = youtubeService;
@@ -45,8 +49,10 @@ public class ScheduleTask {
                     Optional<Client> newClient = vkService.getClientFromYoutubeLiveStreamByName(client.getFullName());
                     if (newClient.isPresent()) {
                         clientService.update(newClient.get());
-                    } else {
+                    } else if (!newClient.equals(Optional.empty())) {
                         clientService.add(newClient.get());
+                    } else {
+                        logger.info("Client from Youtube channel didn't match into the VK group");
                     }
                 }
             }

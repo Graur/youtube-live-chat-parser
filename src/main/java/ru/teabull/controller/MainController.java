@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.teabull.model.Client;
 import ru.teabull.service.client.interfaces.ClientService;
-
-import java.util.List;
 
 @Controller
 public class MainController {
@@ -21,8 +18,7 @@ public class MainController {
 
     @GetMapping("/")
     public String homePage(Model model) {
-        List<Client> list = clientService.findAll();
-        model.addAttribute("list", list);
+        model.addAttribute("list", clientService.findAll());
         return "index";
     }
 }
