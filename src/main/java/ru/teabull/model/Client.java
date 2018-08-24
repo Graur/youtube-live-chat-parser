@@ -1,6 +1,7 @@
 package ru.teabull.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -46,5 +47,30 @@ public class Client {
 
     public void setVkLink(String vkLink) {
         this.vkLink = vkLink;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return id == client.id &&
+                Objects.equals(fullName, client.fullName) &&
+                Objects.equals(vkLink, client.vkLink);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, fullName, vkLink);
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", vkLink='" + vkLink + '\'' +
+                '}';
     }
 }
