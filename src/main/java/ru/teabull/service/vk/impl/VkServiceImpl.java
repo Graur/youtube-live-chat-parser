@@ -13,15 +13,12 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.teabull.config.interfaces.VkConfig;
 import ru.teabull.model.Client;
 import ru.teabull.service.vk.interfaces.VkService;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service

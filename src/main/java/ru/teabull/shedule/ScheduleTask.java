@@ -52,7 +52,7 @@ public class ScheduleTask {
                     } else if (!newClient.equals(Optional.empty())) {
                         clientService.add(newClient.get());
                     } else {
-                        logger.info("Client from Youtube channel didn't match into the VK group");
+                        logger.info("Can't find matching by name from Youtube live-chat in the VK group");
                     }
                 }
             }
