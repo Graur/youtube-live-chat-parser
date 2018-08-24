@@ -11,7 +11,7 @@ _spring.datasource.username_ - логин БД
 _spring.datasource.password_ - пароль от БД
 2) [vk.properties:](https://github.com/Graur/youtube-live-chat-parser/blob/master/src/main/resources/vk.properties)
 _vk.token_ - токен в вк (получить можно перейдя по ссылке: `https://oauth.vk.com/authorize?client_id=ИД_ВАШЕГО_ПРИЛОЖЕНИЯ&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=offline,messages&response_type=token&v=5.78` 
-и скопировав значение параметра `token` его в это поле)  
+и скопировав значение параметра `token` в это поле)  
 _youtube.target.vkgroup.id_ - id группы, для которой будет производится сравнение по имени из Youtube чата (только числовые значения!)
 3) [youtube.properties:](https://github.com/Graur/youtube-live-chat-parser/blob/master/src/main/resources/youtube.properties)
 _youtube.apikey_ - API ключ, полученный в `https://console.developers.google.com/apis/`    
